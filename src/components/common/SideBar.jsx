@@ -1,5 +1,5 @@
 // src/components/common/Sidebar.jsx
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { 
   Box, 
   VStack,
@@ -73,7 +73,20 @@ const Sidebar = () => {
   const { colorMode } = useColorMode();
   const location = useLocation();
   const { isSidebarOpen, toggleSidebar } = useContext(SidebarContext);
-  const [isMobile] = useMediaQuery('(max-width: 768px)');
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  console.log(windowWidth)
+  const isMobile = windowWidth < 768;
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+    
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+  console.log(isMobile)
+  console.log(isSidebarOpen)
   
   const bgColor = colorMode === 'dark' ? 'gray.800' : 'white';
   const activeColor = colorMode === 'dark' ? 'brand.200' : 'brand.600';
@@ -198,18 +211,20 @@ const Sidebar = () => {
       </Box>
       
       {/* Toggle button for desktop */}
-      {!isMobile && !isSidebarOpen && (
+      {!isMobile && isSidebarOpen && (
         <IconButton
           aria-label="Open sidebar"
           icon={<FiChevronLeft style={{ transform: 'rotate(180deg)' }} />}
           position="fixed"
           left="0"
-          top="70px"
+          top="80px"
           colorScheme="gray"
           size="sm"
           onClick={toggleSidebar}
           borderLeftRadius="0"
           zIndex="docked"
+          boxShadow="md"
+          bg={colorMode === 'dark' ? 'gray.800' : 'white'}
         />
       )}
     </>

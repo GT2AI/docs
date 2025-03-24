@@ -128,46 +128,48 @@ const Home = () => {
       </Box>
       
       {/* Documentation Cards */}
-      <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={6}>
-        {docCards.map((card) => (
-          <Card
-            key={card.title}
-            as={RouterLink}
-            to={card.path}
-            transition="all 0.3s"
-            _hover={{
-              transform: 'translateY(-4px)',
-              boxShadow: 'xl',
-              textDecoration: 'none',
-            }}
-            h="100%"
-          >
-            <CardBody>
-              <VStack align="start" spacing={4}>
-                <Box
-                  p={2}
-                  borderRadius="md"
-                  bg={colorMode === 'dark' ? 'brand.900' : 'brand.50'}
-                  color={colorMode === 'dark' ? 'brand.200' : 'brand.500'}
-                >
-                  <Icon as={card.icon} boxSize={6} />
-                </Box>
-                
-                <Heading as="h3" size="md" fontFamily="heading">
-                  {card.title}
-                </Heading>
-                
-                <Text>{card.description}</Text>
-                
-                <HStack fontSize="sm" color={colorMode === 'dark' ? 'brand.200' : 'brand.500'}>
-                  <Text>Learn more</Text>
-                  <Icon as={FiArrowRight} />
-                </HStack>
-              </VStack>
-            </CardBody>
-          </Card>
-        ))}
-      </SimpleGrid>
+      <Box px={4} maxW="container.xl" mx="auto">
+        <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={6}>
+            {docCards.map((card) => (
+            <Card
+              key={card.title}
+              as={RouterLink}
+              to={card.path}
+              transition="all 0.3s"
+              _hover={{
+                transform: 'translateY(-4px)',
+                boxShadow: 'xl',
+                textDecoration: 'none',
+              }}
+              h="100%"
+            >
+              <CardBody>
+                <VStack align="start" spacing={4}>
+                  <Box
+                    p={2}
+                    borderRadius="md"
+                    bg={colorMode === 'dark' ? 'brand.900' : 'brand.50'}
+                    color={colorMode === 'dark' ? 'brand.200' : 'brand.500'}
+                  >
+                    <Icon as={card.icon} boxSize={6} />
+                  </Box>
+                  
+                  <Heading as="h3" size="md" fontFamily="heading">
+                    {card.title}
+                  </Heading>
+                  
+                  <Text>{card.description}</Text>
+                  
+                  <HStack fontSize="sm" color={colorMode === 'dark' ? 'brand.200' : 'brand.500'}>
+                    <Text>Learn more</Text>
+                    <Icon as={FiArrowRight} />
+                  </HStack>
+                </VStack>
+              </CardBody>
+            </Card>
+          ))}
+        </SimpleGrid>
+      </Box>
     </Box>
   );
 };

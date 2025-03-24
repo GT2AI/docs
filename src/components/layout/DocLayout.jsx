@@ -32,8 +32,9 @@ const DocLayout = () => {
           ml={{ base: 0, md: isSidebarOpen ? '280px' : '0' }}
           transition="margin-left 0.3s ease"
           bg={colorMode === 'dark' ? 'gray.900' : 'gray.50'}
+          width={{ base: '100%', md: `calc(100% - ${isSidebarOpen ? '280px' : '0px'})` }}
         >
-          <Container maxW="container.lg" py={10} px={{ base: 4, md: 8 }}>
+          <Container maxW="container.lg" py={10} px={{ base: 6, md: 10 }}>
             <Outlet />
           </Container>
         </Box>
