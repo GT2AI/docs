@@ -98,17 +98,7 @@ const Header = () => {
             </Link>
             
             <ThemeToggle />
-            
-            <Button
-              as={RouterLink}
-              to="/"
-              variant="outline"
-              size="sm"
-              colorScheme="brand"
-              display={{ base: 'none', sm: 'inline-flex' }}
-            >
-              Back to App
-            </Button>
+
           </HStack>
         </Flex>
       </Container>
