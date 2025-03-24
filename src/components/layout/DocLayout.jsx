@@ -10,7 +10,7 @@ import {
 } from '@chakra-ui/react';
 import Header from '../common/Header';
 import Footer from '../common/Footer';
-import Sidebar from '../common/Sidebar';
+import Sidebar from '../common/SideBar';
 import { SidebarContext } from '../../contexts/SidebarContext';
 
 const DocLayout = () => {
