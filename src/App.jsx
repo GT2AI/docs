@@ -21,12 +21,8 @@ import NotFoundPage from './pages/NotFound';
 function App() {
   const { colorMode } = useColorMode();
   const [isSidebarOpen, setSidebarOpen] = useState(true);
-  const location = useLocation();
 
   const toggleSidebar = () => setSidebarOpen(!isSidebarOpen);
-
-  // Determine if we're on the homepage or a documentation page
-  const isHomePage = location.pathname === '/';
 
   return (
     <SidebarContext.Provider value={{ isSidebarOpen, toggleSidebar }}>

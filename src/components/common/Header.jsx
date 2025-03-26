@@ -18,11 +18,13 @@ import { FiMenu } from 'react-icons/fi';
 import ThemeToggle from './ThemeToggle';
 import SearchBar from './SearchBar';
 import { SidebarContext } from '../../contexts/SidebarContext';
+// ...
+
 
 const Header = () => {
   const { colorMode } = useColorMode();
   const location = useLocation();
-  const { toggleSidebar } = useContext(SidebarContext);
+  const { isSidebarOpen, toggleSidebar } = useContext(SidebarContext);
   
   // Check if we're on a documentation page
   const isDocsPage = location.pathname.includes('/docs');
@@ -39,7 +41,10 @@ const Header = () => {
       borderBottom="1px"
       borderColor={colorMode === 'dark' ? 'gray.700' : 'gray.200'}
     >
-      <Container maxW="container.xl" py={3}>
+      <Container 
+        maxW="container.xl" 
+        py={3}
+      >
         <Flex justify="space-between" align="center">
           {/* Left Side: Logo and sidebar toggle */}
           <HStack spacing={4}>

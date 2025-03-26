@@ -74,7 +74,6 @@ const Sidebar = () => {
   const location = useLocation();
   const { isSidebarOpen, toggleSidebar } = useContext(SidebarContext);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  console.log(windowWidth)
   const isMobile = windowWidth < 768;
 
   useEffect(() => {
@@ -85,32 +84,13 @@ const Sidebar = () => {
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
-  console.log(isMobile)
-  console.log(isSidebarOpen)
   
   const bgColor = colorMode === 'dark' ? 'gray.800' : 'white';
   const activeColor = colorMode === 'dark' ? 'brand.200' : 'brand.600';
   const hoverBgColor = colorMode === 'dark' ? 'gray.700' : 'gray.100';
   
-  // Determine if sidebar should be shown
-  const showSidebar = isMobile ? false : isSidebarOpen;
-  
   return (
     <>
-      {/* Mobile overlay when sidebar is open */}
-      {isMobile && isSidebarOpen && (
-        <Box
-          position="fixed"
-          top="0"
-          left="0"
-          right="0"
-          bottom="0"
-          bg="blackAlpha.600"
-          zIndex="overlay"
-          onClick={toggleSidebar}
-        />
-      )}
-      
       {/* Sidebar */}
       <Box
         as="aside"
@@ -209,24 +189,6 @@ const Sidebar = () => {
           </List>
         </Box>
       </Box>
-      
-      {/* Toggle button for desktop */}
-      {!isMobile && isSidebarOpen && (
-        <IconButton
-          aria-label="Open sidebar"
-          icon={<FiChevronLeft style={{ transform: 'rotate(180deg)' }} />}
-          position="fixed"
-          left="0"
-          top="80px"
-          colorScheme="gray"
-          size="sm"
-          onClick={toggleSidebar}
-          borderLeftRadius="0"
-          zIndex="docked"
-          boxShadow="md"
-          bg={colorMode === 'dark' ? 'gray.800' : 'white'}
-        />
-      )}
     </>
   );
 };
