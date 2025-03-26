@@ -96,7 +96,8 @@ const Home = () => {
         <VStack spacing={6} position="relative" maxW="container.md" mx="auto" textAlign="center">
           <Heading 
             as="h1" 
-            size="3xl" 
+            size="3xl"
+            padding={10} 
             fontFamily="heading"
             bgGradient={colorMode === 'dark' 
               ? 'linear(to-r, brand.200, brand.400)'
